@@ -1,0 +1,68 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Default title",
+    "description": "Organization Helper",
+    "version": "1.0"
+  },
+  "host": "microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Replaced Text": {
+                  "type": "string",
+                  "description": "Replaced Text"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Replace text in a string using RegEx pattern",
+        "description": "Replace text in a string using RegEx pattern",
+        "operationId": "RegExReplace",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Input Text": {
+                  "type": "string",
+                  "description": "Input Text"
+                },
+                "Regex Pattern": {
+                  "type": "string",
+                  "description": "Regex Pattern"
+                },
+                "Replace Text": {
+                  "type": "string",
+                  "description": "Replace Text"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
