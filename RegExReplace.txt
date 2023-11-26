@@ -1,0 +1,27 @@
+public class Script : ScriptBase
+{
+public override async Task<HttpResponseMessage> ExecuteAsync()
+{
+HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+var operation=this.Context.OperationId;
+var contentAsString = await this.Context.Request.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+// Parse as JSON object
+var contentAsJson = JObject.Parse(contentAsString);
+
+
+// Get the value of text to check
+var inputText = (string)contentAsJson["Input Text"];
+var regexPattern = (string)contentAsJson["Regex Pattern"];
+var replaceText = (string)contentAsJson["Replace Text"];
+
+var replacedText=Regex.Replace(inputText,regexPattern,replaceText??string.Empty);
+JObject output = new JObject
+{
+["Replaced Text"] = replacedText
+};
+response = new HttpResponseMessage(HttpStatusCode.OK);
+response.Content = CreateJsonContent(output.ToString());
+return response;
+}
+}
